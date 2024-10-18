@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -16,7 +16,7 @@
 
     {% if filename %}
     <h2>Resultado da Detecção:</h2>
-    <img src="{{ url_for('static', filename=filename) }}" alt="Resultado">
+    <img src="{{ url_for('static/uploads/', filename=filename) }}" alt="Resultado">
     {% endif %}
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
