@@ -16,7 +16,7 @@
 
     {% if filename %}
     <h2>Resultado da Detecção:</h2>
-    <img src="{{ url_for('static/uploads/', filename=filename) }}" alt="Resultado">
+    <img src="{{ url_for('static', filename=filename) }}" alt="Imagem processada">
     {% endif %}
 
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>

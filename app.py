@@ -6,15 +6,15 @@ import cv2
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
-# Carregar o modelo treinado com suas classes (você pode substituir pelo seu modelo)
+# Carregar o modelo treinado com suas classes
 model = YOLO('yolov8n.pt')  
 
-# Lista de labels para as 4 doenças (você pode adaptar os nomes dos arquivos)
+# Lista de labels para as 4 doenças
 disease_labels = {
     'alternariaCucumerina': 'labels/alternariaCucumerina.txt',
     'antracnose': 'labels/antracnose.txt',
-    'manchaAngular': 'labels/manchaAngular.txt',
-    'mildew': 'labels/mildew.txt'
+    'murchaFusarium': 'labels/murchaFusarium.txt',
+    'oidio': 'labels/oidio2.txt'
 }
 
 # Rota para a página inicial
@@ -60,31 +60,23 @@ def upload_image():
                     x2 = int((x_center + width / 2) * img.shape[1])
                     y2 = int((y_center + height / 2) * img.shape[0])
                     
-                    # Aqui, você pode implementar uma lógica de comparação entre a imagem e as anotações
-
-                    # Exemplo: adicionar confiança (aqui como exemplo, use a predição real)
-                    confidence = 0.95  # Valor fictício, ajustar conforme sua lógica
+                    # Exemplo de confiança fictícia, ajustar conforme necessário
+                    confidence = 0.95
                     if confidence > highest_confidence:
                         highest_confidence = confidence
                         best_disease = disease
 
                     # Desenhar o bounding box na imagem
-                    cv2.rectangle(img, (x1, y1), (x2, y2), (0, 255, 0), 2)
+                    cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
                     cv2.putText(img, f'{disease} {confidence:.2f}', (x1, y1 - 10), 
-                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+                                cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
         
         # Salvar a imagem com os bounding boxes
         output_path = os.path.join(app.config['UPLOAD_FOLDER'], f"output_{file.filename}")
         cv2.imwrite(output_path, img)
-        print(f"Imagem salva em: {output_path}")  # Verifique no console se a imagem foi salva
 
         # Retornar o resultado para o usuário
-        return render_template('index.html', filename=f"output_{file.filename}", disease=best_disease, confidence=highest_confidence)
-
-# Rota para exibir a imagem processada
-@app.route('/static/uploads/<filename>')
-def display_image(filename):
-    return url_for('static', filename=f'uploads/{filename}')
+        return render_template('index.html', filename=f"uploads/output_{file.filename}", disease=best_disease, confidence=highest_confidence)
 
 if __name__ == "__main__":
     app.run(debug=True)
