@@ -45,6 +45,7 @@ def upload_image():
         # Variáveis para armazenar a doença mais provável e maior confiança
         best_disease = None
         highest_confidence = 0
+        bounding_boxes_drawn = 0  # Contador de bounding boxes
 
         # Percorrer as 4 doenças e comparar com a imagem
         for disease, label_file_path in disease_labels.items():
@@ -70,6 +71,13 @@ def upload_image():
                     cv2.rectangle(img, (x1, y1), (x2, y2), (255, 0, 0), 2)
                     cv2.putText(img, f'{disease} {confidence:.2f}', (x1, y1 - 10), 
                                 cv2.FONT_HERSHEY_SIMPLEX, 0.5, (255, 0, 0), 2)
+                    
+                    bounding_boxes_drawn += 1  # Incrementar o contador
+                    if bounding_boxes_drawn >= 4:  # Limitar a 3 bounding boxes
+                        break
+            
+            if bounding_boxes_drawn >= 4:  # Se o limite for atingido, parar o loop externo
+                break
         
         # Salvar a imagem com os bounding boxes
         output_path = os.path.join(app.config['UPLOAD_FOLDER'], f"output_{file.filename}")
