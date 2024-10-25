@@ -16,22 +16,32 @@
         </div>
       </nav>
 
-    <div class="content-model">
-        <div class="header-model">
-            <h4>Detecção de Doenças em Folhas de Melancia</h4>
-            <button class="start" type="button">
+    <form action="/upload" method="POST" enctype="multipart/form-data">
+        <!-- <input type="file" name="image" accept="image/*" required>
+        <button type="submit">Enviar Imagem</button> -->
+        <div class="content-model">
+            <div class="header-model">
+                <h4 class="mb-3">Detecção de Doenças em Folhas de Melancia</h4>
+            </div>
+            <p>
+                Este projeto utiliza inteligência artificial para identificar possíveis doenças nas folhas da melancia. Com o auxílio de técnicas de análise de imagem, é possível detectar sinais de doenças nas folhas, permitindo uma resposta rápida e precisa para o controle das pragas e proteção das plantas. Carregue uma imagem da folha e clique em "Analisar" para verificar a presença de sintomas que indicam doenças.
+            </p>
+        </div>
+        <div class="container-fluid d-flex justify-content-end py-0">
+            <button class="start" type="submit">
                 <img src="../static/img/search.svg" alt="ícone">
                 Analisar imagem
             </button>
         </div>
-        <div id="webcam-container"></div>
-        <div id="label-container"></div>
-    </div>
-
-    <form action="/upload" method="POST" enctype="multipart/form-data">
-        <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Enviar Imagem</button>
+    
+        <div class="file-drop-area">
+            <input type="file" class="file-input" name="image" accept="image/*" required>
+            <img src="../static/img/upload.svg" alt="Adicionar arquivo">
+            <p class="label-text">Clique aqui para <em> procurar em seu dispositivo</em></p>
+            <p class="label-text mt-0">.JPG .JPEG .PNG</p>
+        </div>
     </form>    
+
 
     {% if filename %}
     <h2>Resultado da Detecção:</h2>
