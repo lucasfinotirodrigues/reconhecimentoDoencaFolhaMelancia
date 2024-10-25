@@ -19,8 +19,14 @@ disease_labels = {
 
 # Rota para a página inicial
 @app.route('/')
+def welcome():
+    return render_template('home.html')
+
+# Rota para a página de upload
+@app.route('/detecao')
 def index():
     return render_template('index.html')
+
 
 # Rota para o upload da imagem
 @app.route('/upload', methods=['POST'])
