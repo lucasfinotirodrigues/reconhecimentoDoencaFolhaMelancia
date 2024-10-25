@@ -4,7 +4,7 @@ body {
 }
 
 h1 {
-    color: #dd8100;
+    color: #68B41D;
 }
 
 form {
@@ -65,11 +65,14 @@ img {
     align-items: center;
 }
 
+.container-fluid {
+    padding: 58px!important;
+}
+
 h4 {
     font-size: 48px;
     font-weight: 700;
-    color: #fff;
-    text-transform: uppercase;
+    color: #c4d4d4  ;
 }
 
 h5 {
@@ -117,26 +120,28 @@ button:hover {
     display: flex;
     gap: 12px;
     align-items: center;
-    padding: 12px;
+    justify-content: center;
     font-family: 'Poppins', sans-serif;
-    font-size: 14px;
+    font-size: 15px;
+    padding: 12px;
+    font-weight: 700;
     cursor: pointer;
-    background-color: #dd8100;
+    background-color: #68B41D;
     color: #fff;
     border: none;
-    width: 160px;
+    width: 200px;
     height: 48px;
     border-radius: 5px;
 }
     
 .start:hover {
-    background-color: #c97500;
+    background-color: #5a9b18;
     transition: 0.3s;
 }
 
 nav {
-    background-color: #dd8100;
-    height: 64px;
+    background-color: #68B41D;
+    height: 80px;
 }
 
 @media screen and (max-width: 768px) {
@@ -145,18 +150,15 @@ nav {
         gap: 12px !important
     }
 
-    h4 {
-        font-size: 60px !important
-    }
-
-    h5 {
-        font-size: 20px !important
-    }
 
     button {
         font-size: 16px !important;
         width: 260px !important;
         height: 40px !important
+    }
+
+    .container-fluid {
+        padding: 0 58px!important;
     }
 }
 
@@ -165,19 +167,14 @@ nav {
     .container {
         gap: 40px !important
     }
-
-    h4 {
-        font-size: 28px !important;
-    }
-
-    h5 {
-        font-size: 16px !important;
-    }
 }
 
 @media screen and (max-width: 575px) {
     .content-model {
-        padding: 23px;
+        padding: 24px;
     }
-    
+
+    .container-fluid {
+        padding: 0 24px!important;
+    }    
 }
