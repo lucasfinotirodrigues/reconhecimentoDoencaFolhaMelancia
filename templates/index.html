@@ -17,8 +17,6 @@
       </nav>
 
     <form action="/upload" method="POST" enctype="multipart/form-data">
-        <!-- <input type="file" name="image" accept="image/*" required>
-        <button type="submit">Enviar Imagem</button> -->
         <div class="content-model">
             <div class="header-model">
                 <h4 class="mb-3">Detecção de Doenças em Folhas de Melancia</h4>
@@ -32,8 +30,7 @@
                 <img src="../static/img/search.svg" alt="ícone">
                 Analisar imagem
             </button>
-        </div>
-    
+        </div>    
         <div class="file-drop-area">
             <input type="file" class="file-input" name="image" accept="image/*" required>
             <img src="../static/img/upload.svg" alt="Adicionar arquivo">
@@ -41,7 +38,6 @@
             <p class="label-text mt-0">.JPG .JPEG .PNG</p>
         </div>
     </form>    
-
 
     {% if filename %}
     <h2>Resultado da Detecção:</h2>
